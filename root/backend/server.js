@@ -1,9 +1,11 @@
 const express = require('express')
 const app = express()
+
 const axios = require("axios");
 const cheerio = require("cheerio");
 
 let text;
+
 axios.get("https://comptrain.co/wod/")
     .then(res => {
 
@@ -11,6 +13,7 @@ axios.get("https://comptrain.co/wod/")
         text = $(".wod-info > div>div:first-child")
 
     })
+
 
 app.get('/', function (req, res) {
     res.send(text.html())

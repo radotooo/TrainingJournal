@@ -1,5 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import Wod from './Wod'
+import styled from "styled-components";
+
+const Wrapper = styled.div`
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+`;
+
 
 export default function Main() {
 
@@ -16,10 +25,10 @@ export default function Main() {
 
 
     return (
-        <div className="main">
+        <Wrapper>
             <div className="wod">
                 <Wod data={wod} />
             </div>
-        </div>
+        </Wrapper>
     )
 }

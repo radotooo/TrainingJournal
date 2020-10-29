@@ -1,8 +1,11 @@
 import React from 'react'
 import styled from "styled-components";
+import device from "./Styles/MediqQueries";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 const Wrapper = styled.div`
+display:flex;
+justify-content:center;
 width:100%;
 height:50px;
 background-color:#1976D2;
@@ -12,7 +15,11 @@ color:white;
 
 const Navigation = styled.div`
 display:flex;
+width:70%;
 margin-left:1em;
+@media ${device.laptop}{
+    width:100%;
+}
 `;
 
 const Button = styled.a`

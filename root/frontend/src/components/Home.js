@@ -4,26 +4,30 @@ import Main from './Main'
 import styled from "styled-components";
 
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import Calculator from './Calculator';
+
+const Wrapper = styled.div`
+height:100vh;
+display:flex;
+flex-direction:column;
+`;
 
 
 export default function Home() {
     return (
         <BrowserRouter>
-            <div>
-                <header>
-                    <Header />
-                </header>
-                <main>
-                    <Switch>
-                        <Route exact path="/"  >
-                            <Main />
-                        </Route>
-                        <Route path="/calculator"  >
-                            {/* <Calculator /> */}
-                        </Route>
-                    </Switch>
-                </main>
-            </div>
+            <Wrapper>
+                <Header />
+                <Switch>
+                    <Route exact path="/"  >
+                        <Main />
+                    </Route>
+                    <Route path="/calculator"  >
+                        <Calculator />
+                    </Route>
+                </Switch>
+
+            </Wrapper>
         </BrowserRouter>
 
     )

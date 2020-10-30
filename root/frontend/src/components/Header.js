@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from "styled-components";
 import device from "./Styles/MediqQueries";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import StyledLink from './Styles/StyledLink';
 
 const Wrapper = styled.div`
 display:flex;
@@ -15,6 +15,7 @@ color:white;
 
 const Navigation = styled.div`
 display:flex;
+align-items:center;
 width:70%;
 margin-left:1em;
 @media ${device.laptop}{
@@ -31,10 +32,13 @@ export default function Header() {
     return (
         <Wrapper>
             <Navigation>
-                <Button>Today Wod</Button>
-                <Button>Calculator</Button>
+                <StyledLink to="/">
+                    Today Wod
+                </StyledLink>
+                <StyledLink to="/calculator">
+                    <Button>Calculator</Button>
+                </StyledLink>
             </Navigation>
         </Wrapper>
-
     )
 }

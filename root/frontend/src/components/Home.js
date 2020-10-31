@@ -7,9 +7,9 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Calculator from './Calculator';
 
 const Wrapper = styled.div`
-height:100vh;
-display:flex;
-flex-direction:column;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
 `;
 
 

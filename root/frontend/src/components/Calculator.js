@@ -1,9 +1,6 @@
 import React from 'react'
 import styled from "styled-components";
-import Calculator_Form from './Calculator_Form';
-import device from "./Styles/MediqQueries";
-
-
+import CalculatorForm from './CalculatorForm';
 
 const Wrapper = styled.div`
 display:flex;
@@ -12,12 +9,29 @@ justify-content:center;
 align-items:center;
 `;
 
-const data = [["50%","of 100","Result 50"],["10 is what %","of 100","Result 10%"]]
+const percentageOfNumber = ["50%", "of 100", "Result 50"]
+const numberPercentageOfNumber = ["10 is what %", "of 100", "Result 10%"]
+const getPercentageOfNumber = (firstNum, secondNum) => {
+    if (firstNum === '' && secondNum === '') {
+        return NaN
+    }
+    return (firstNum / 100) * secondNum;
+}
+const getWhatPercentageOfYisX = (firstNum, secondNum) => {
+    if (firstNum === '' && secondNum === '') {
+        return NaN
+    }
+    return (firstNum / secondNum) * 100;
+}
+
 
 export default function Calculator() {
+
+
     return (
         <Wrapper>
-            {data.map(x=> <Calculator_Form text={x} />)}
+            <CalculatorForm text={percentageOfNumber} calculate={getPercentageOfNumber} />
+            <CalculatorForm text={numberPercentageOfNumber} calculate={getWhatPercentageOfYisX} />
         </Wrapper>
     )
 }

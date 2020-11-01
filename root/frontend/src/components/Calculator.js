@@ -24,10 +24,7 @@ const getWhatPercentageOfYisX = (firstNum, secondNum) => {
     return (firstNum / secondNum) * 100;
 }
 
-
 export default function Calculator() {
-
-
     return (
         <Wrapper>
             <CalculatorForm text={percentageOfNumber} calculate={getPercentageOfNumber} />

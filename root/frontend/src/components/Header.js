@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from "styled-components";
 import device from "./Styles/MediqQueries";
 import StyledLink from './Styles/StyledLink';
+import MenuIcon from '@material-ui/icons/Menu';
+import IconButton from '@material-ui/core/IconButton';
+import DrawerComponent from './Drawer';
+
 
 const Wrapper = styled.div`
     display:flex;
@@ -23,17 +27,46 @@ const Navigation = styled.div`
 }
 `;
 
+const StyledIconButton = styled(IconButton)`
+    color:white !important;
+    display:none !important;
+    @media ${device.mobileL}{
+            display:block !important;
+    }
+`;
+
+const Container = styled.div`
+display:flex;
+   @media ${device.mobileL}{
+    display:none;
+}
+
+`;
+
 export default function Header() {
+    const [drawer, setDrawer] = useState(false)
+    const handleClick = (value) => {
+        setDrawer(value)
+    }
     return (
         <Wrapper>
+            <DrawerComponent handleClick={handleClick} drawer={drawer} setDrawer={setDrawer} />
             <Navigation>
-                <StyledLink to="/">
-                    Today Wod
+                <StyledIconButton onClick={() => setDrawer(true)} >
+                    <MenuIcon />
+                </StyledIconButton>
+                <Container>
+                    <StyledLink hovercolor="#d2d9df" to="/">
+                        Today Wod
                 </StyledLink>
-                <StyledLink to="/calculator">
-                    Calculator
+                    <StyledLink hovercolor="#d2d9df" to="/calculator">
+                        Calculator
                 </StyledLink>
+                    <StyledLink hovercolor="#d2d9df" to="/conversions">
+                        Conversions
+                </StyledLink>
+                </Container>
             </Navigation>
-        </Wrapper>
+        </Wrapper >
     )
 }

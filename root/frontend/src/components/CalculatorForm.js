@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import styled from "styled-components";
 import device from "./Styles/MediqQueries";
+import Paper from '@material-ui/core/Paper';
+import { withStyles } from '@material-ui/core';
 
 const Input = styled.input.attrs(props => ({
     type: "text",
@@ -69,12 +71,15 @@ const Form = styled.div`
 }
 `;
 
+const StyledPaper = styled(Paper)`
+ border-radius:1em !important;
+`;
+
 export default function CalculatorForm(props) {
 
     const [firstNum, setFirstNum] = useState('')
     const [secondNum, setSecondNum] = useState('')
     const [result, setResult] = useState('')
-
     const [error, setError] = useState(false)
 
     const handleKeyDown = (e) => {
@@ -104,17 +109,19 @@ export default function CalculatorForm(props) {
 
     return (
         <div>
-            <Form action="">
-                <Container>
-                    <Input error={error} placeholder={props.text[0]} onChange={(e) => setFirstNum(e.target.value)} value={firstNum} />
-                    <Input error={error} placeholder={props.text[1]} onKeyPress={(e) => handleKeyDown(e)} onChange={(e) => setSecondNum(e.target.value)} value={secondNum} />
-                    <Input placeholder={props.text[2]} value={result} readOnly />
-                </Container>
-                <Container >
-                    <Button onClick={handleCalculate}>Calculate</Button>
-                    <Button secondaryColor onClick={reset}>Reset</Button>
-                </Container>
-            </Form>
+            <StyledPaper elevation={3}>
+                <Form action="">
+                    <Container>
+                        <Input error={error} placeholder={props.text[0]} onChange={(e) => setFirstNum(e.target.value)} value={firstNum} />
+                        <Input error={error} placeholder={props.text[1]} onKeyPress={(e) => handleKeyDown(e)} onChange={(e) => setSecondNum(e.target.value)} value={secondNum} />
+                        <Input placeholder={props.text[2]} value={result} readOnly />
+                    </Container>
+                    <Container >
+                        <Button onClick={handleCalculate}>Calculate</Button>
+                        <Button secondaryColor onClick={reset}>Reset</Button>
+                    </Container>
+                </Form>
+            </StyledPaper>
         </div>
     )
 }

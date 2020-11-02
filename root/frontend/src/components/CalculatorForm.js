@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import styled from "styled-components";
 import device from "./Styles/MediqQueries";
 import Paper from '@material-ui/core/Paper';
-import { withStyles } from '@material-ui/core';
 
 const Input = styled.input.attrs(props => ({
     type: "text",

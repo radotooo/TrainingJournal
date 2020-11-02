@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Wod from './Wod'
 import styled from "styled-components";
 
-export const Wrapper = styled.div`
+export const Container = styled.div`
 display:flex;
 justify-content:center;
 `;
@@ -21,10 +21,10 @@ export default function Main() {
     }, [])
 
     return (
-        <Wrapper center>
+        <Container center>
             <div className="wod">
                 <Wod data={wod} />
             </div>
-        </Wrapper>
+        </Container>
     )
 }

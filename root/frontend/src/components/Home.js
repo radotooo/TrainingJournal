@@ -5,8 +5,9 @@ import styled from "styled-components";
 
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Calculator from './Calculator';
+import Conversion from './Conversion';
 
-const Wrapper = styled.div`
+const Container = styled.div`
     height:100vh;
     display:flex;
     flex-direction:column;
@@ -16,7 +17,7 @@ const Wrapper = styled.div`
 export default function Home() {
     return (
         <BrowserRouter>
-            <Wrapper>
+            <Container>
                 <Header />
                 <Switch>
                     <Route exact path="/"  >
@@ -25,9 +26,12 @@ export default function Home() {
                     <Route path="/calculator"  >
                         <Calculator />
                     </Route>
+                    <Route path="/conversion"  >
+                        <Conversion />
+                    </Route>
                 </Switch>
 
-            </Wrapper>
+            </Container>
         </BrowserRouter>
 
     )

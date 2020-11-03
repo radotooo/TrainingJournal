@@ -40,7 +40,16 @@ function skiToRun(a) {
     return Math.floor(a * 0.8)
 }
 
-console.log(rowToRun(100));
-console.log(rowToBikeErg(125));
-console.log(runToAssBike(100));
+
+const row = {
+    running: (a) => a * 0.8,
+    "Bike Erg": (a) => a * 0.8,
+}
+
+
+console.log(row["Bike Erg"](10));
+
+// console.log(rowToRun(100));
+// console.log(rowToBikeErg(125));
+// console.log(runToAssBike(100));
 

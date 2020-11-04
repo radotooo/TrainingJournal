@@ -7,7 +7,7 @@ import IconButton from '@material-ui/core/IconButton';
 import DrawerComponent from './Drawer';
 
 
-const Wrapper = styled.div`
+const Container = styled.div`
     display:flex;
     justify-content:center;
     width:100%;
@@ -35,7 +35,7 @@ const StyledIconButton = styled(IconButton)`
     }
 `;
 
-const Container = styled.div`
+const LinkContainer = styled.div`
 display:flex;
    @media ${device.mobileL}{
     display:none;
@@ -49,24 +49,24 @@ export default function Header() {
         setDrawer(value)
     }
     return (
-        <Wrapper>
+        <Container>
             <DrawerComponent handleClick={handleClick} drawer={drawer} setDrawer={setDrawer} />
             <Navigation>
                 <StyledIconButton onClick={() => setDrawer(true)} >
                     <MenuIcon />
                 </StyledIconButton>
-                <Container>
-                    <StyledLink hovercolor="#d2d9df" to="/">
+                <LinkContainer>
+                    <StyledLink to="/">
                         Today Wod
                 </StyledLink>
-                    <StyledLink hovercolor="#d2d9df" to="/calculator">
+                    <StyledLink to="/calculator">
                         Calculator
                 </StyledLink>
-                    <StyledLink hovercolor="#d2d9df" to="/conversions">
+                    <StyledLink to="/conversion">
                         Conversions
                 </StyledLink>
-                </Container>
+                </LinkContainer>
             </Navigation>
-        </Wrapper >
+        </Container >
     )
 }

@@ -9,7 +9,7 @@ const StyledLink = styled(Link)`
         text-decoration: none;
     }
     &:hover {
-        color:${props => props.hovercolor ? props.hovercolor : ""};
+        color:${({ $hoverColor }) => $hoverColor ? $hoverColor : "#d2d9df"};
         }
 `;
 

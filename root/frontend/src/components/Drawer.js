@@ -38,7 +38,7 @@ export default function DrawerComponent({ drawer, setDrawer, handleClick }) {
                     </StyledIconButton>
                     <MenuItem><StyledLink to="/" >Today Wod</StyledLink></MenuItem>
                     <MenuItem><StyledLink to="/calculator" >Calculator</StyledLink></MenuItem>
-                    <MenuItem><StyledLink to="convertions" >Convertions</StyledLink></MenuItem>
+                    <MenuItem><StyledLink to="conversion" >Convertions</StyledLink></MenuItem>
                 </StyledList>
             </StyledDrawer>
         </>

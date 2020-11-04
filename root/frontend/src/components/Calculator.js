@@ -2,7 +2,7 @@ import React from 'react'
 import styled from "styled-components";
 import CalculatorForm from './CalculatorForm';
 
-const Wrapper = styled.div`
+const Container = styled.div`
 display:flex;
 flex-direction:column;
 justify-content:center;
@@ -26,9 +26,9 @@ const getWhatPercentageOfYisX = (firstNum, secondNum) => {
 
 export default function Calculator() {
     return (
-        <Wrapper>
+        <Container>
             <CalculatorForm text={percentageOfNumber} calculate={getPercentageOfNumber} />
             <CalculatorForm text={numberPercentageOfNumber} calculate={getWhatPercentageOfYisX} />
-        </Wrapper>
+        </Container>
     )
 }

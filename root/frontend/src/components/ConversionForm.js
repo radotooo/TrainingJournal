@@ -2,6 +2,7 @@ import { FormControl, InputLabel, Select, TextField } from '@material-ui/core'
 import React, { useState } from 'react'
 import styled from "styled-components";
 import device from './Styles/MediqQueries';
+import Button from '@material-ui/core/Button';
 
 const Container = styled.div`
 display:flex;
@@ -33,19 +34,22 @@ const ButtonContainer = styled.div`
      flex-direction:column;
     }
 `;
-const StyledButton = styled.button`
-background-color:#34b1eb;
+const StyledButton = styled(Button)`
+background-color:${props => props.customColor} !important;
+color:white !important;
 height:56px;
 width:80px;
-font-size:16px;
-margin:0 0.5em;
+margin:0 0.5em !important;
+&:hover{
+    background-color:${props => props.customColor ? "#2069b3" : ""} !important;
+   
+}
     @media ${device.tablet}{
        height:40px;
     }
      @media ${device.mobileXS}{
-    margin:0.2em 0;
+    margin:0.2em 0 !important;
     }
-  
 `;
 
 export default function ConversionForm({ formula, label, data }) {
@@ -86,9 +90,10 @@ export default function ConversionForm({ formula, label, data }) {
 
             <StyledTextField type="text" variant='outlined' value={result} label="Result" onChange={(e) => setResult(e.target.value)} />
             <ButtonContainer>
-                <StyledButton onClick={handleClick}>Calc</StyledButton>
-                <StyledButton onClick={handleClick}>Reset</StyledButton>
+                <StyledButton variant="contained" customColor="#1976D2" onClick={handleClick}>Calc</StyledButton>
+                <StyledButton variant="contained" color="secondary"
+                    onClick={handleClick}>Reset</StyledButton>
             </ButtonContainer>
-        </Container>
+        </Container >
     )
 }

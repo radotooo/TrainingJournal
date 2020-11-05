@@ -6,9 +6,10 @@ import Paper from '@material-ui/core/Paper';
 const Input = styled.input.attrs(props => ({
     type: "text",
 }))`
-    width:80px;
+    width:110px;
     margin:0 5px;
-    height:30px;
+    height:50px;
+    font-size:18px;
     border-radius:5px;
     border:none;
     background-color:${props => props.error ? "#ffcccb" : ''};
@@ -21,17 +22,18 @@ const Input = styled.input.attrs(props => ({
 `;
 
 const Button = styled.a`
-    padding:0.5em;
+    padding:1.1em;
     margin:0.2em;
     background-color:${props => props.secondaryColor ? "#008f7f" : "#d81159"};
     border-radius:0.5em;
     color:white;
     width:100%;
+    
     cursor:pointer;
     transition: all .2s ;
     &:hover{
-        
-    transform: scale(1.02);
+        transform: scale(1.02);
+      
     }
     @media ${device.mobileL}{
     width:80px;
@@ -62,7 +64,7 @@ const Form = styled.div`
     padding:2em;
     border-radius:1em;
       @media ${device.tablet}{
-        max-width:300px;
+        max-width:400px;
     }
     @media ${device.mobileL}{
         max-width:100px;

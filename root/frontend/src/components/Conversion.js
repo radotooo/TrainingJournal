@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from "styled-components";
-import device from './Styles/MediqQueries';
 import { calorieFormula, meterFormula, selectData } from '../data/formulas';
 import ConversionForm from './ConversionForm';
 

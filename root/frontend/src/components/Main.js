@@ -1,11 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import Wod from './Wod'
 import styled from "styled-components";
+import Button from '@material-ui/core/Button';
 
-export const Container = styled.div`
+const Container = styled.div`
 display:flex;
 justify-content:center;
+align-items:center;
+flex-direction:column;
 `;
+
+const StyledButton = styled(Button)`
+background-color:grey!important;
+margin-top:10px!important;
+color:white !important;
+`;
+
 
 export default function Main() {
 
@@ -22,9 +32,10 @@ export default function Main() {
 
     return (
         <Container center>
-            <div className="wod">
+            <div >
                 <Wod data={wod} />
             </div>
+            <StyledButton>Save Score</StyledButton>
         </Container>
     )
 }

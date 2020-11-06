@@ -54,13 +54,24 @@ margin:0 0.5em !important;
 
 export default function ConversionForm({ formula, label, data }) {
 
-    const [meters, setMeters] = useState("")
+    const [meters, setMeters] = useState(0)
     const [result, setResult] = useState("")
     const [fromValue, setFromValue] = useState("")
     const [toValue, setToValue] = useState("")
+    const [clearData, setclearData] = useState(false)
 
     const handleClick = () => {
-        setResult(formula[fromValue][toValue](meters))
+        if (fromValue !== "" && toValue !== "") {
+            setResult(formula[fromValue][toValue](meters))
+            setclearData(false)
+        }
+    }
+    const handleReset = () => {
+        setMeters(0)
+        setResult("")
+        setFromValue("")
+        setToValue("")
+        setclearData(true)
     }
 
     return (
@@ -72,7 +83,7 @@ export default function ConversionForm({ formula, label, data }) {
                     native
                     label="From"
                 >
-                    <option aria-label="None" value="" />
+                    <option value="" selected={clearData ? "selected" : ""} />
                     {data.map((value, index) => <option key={index} value={value} >{value}</option>)}
                 </Select>
             </FormControl>
@@ -83,7 +94,7 @@ export default function ConversionForm({ formula, label, data }) {
                     native
                     label="To"
                 >
-                    <option aria-label="None" value="" />
+                    <option value="" selected={clearData ? "selected" : ""} />
                     {data.map((value, index) => value === fromValue ? <option key={index} disabled value={value} >{value}</option> : <option value={value} key={index}>{value}</option>)}
                 </Select>
             </FormControl>
@@ -92,7 +103,7 @@ export default function ConversionForm({ formula, label, data }) {
             <ButtonContainer>
                 <StyledButton variant="contained" customColor="#1976D2" onClick={handleClick}>Calc</StyledButton>
                 <StyledButton variant="contained" color="secondary"
-                    onClick={handleClick}>Reset</StyledButton>
+                    onClick={handleReset}>Reset</StyledButton>
             </ButtonContainer>
         </Container >
     )

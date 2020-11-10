@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const db = require('./connString')
+const db = require('./connectionString')
 
 
 const connectDB = async () => {

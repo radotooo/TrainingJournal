@@ -2,8 +2,18 @@ const express = require('express');
 const { db } = require('../models/Wod');
 const wod = require('../models/Wod')
 
-
 const router = express.Router();
+
+router.get('/', async (req, res) => {
+    const query = await wod.find({}, (err, result) => {
+        if (err) {
+            res.send(err)
+        }
+        else {
+            res.json(result);
+        }
+    })
+})
 
 router.get('/:title', async (req, res) => {
     const { title } = req.params;
@@ -28,6 +38,5 @@ router.post('/', (req, res) => {
         }
     })
 })
-
 
 module.exports = router; 

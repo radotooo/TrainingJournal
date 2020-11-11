@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const wodSchema = new Schema({
-    name: {
+    title: {
         type: String,
         required: true
     },
@@ -11,7 +11,8 @@ const wodSchema = new Schema({
         type: String,
         required: true
     },
-    result: String,
+    score: String,
+    date: Date,
 })
 
 module.exports = mongoose.model('wod', wodSchema);

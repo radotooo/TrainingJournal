@@ -23,6 +23,12 @@ export const calorieFormula = {
         "Assault Bike": (a) => Math.floor(a * 0.7) + " cal",
         "Bike-Erg": (a) => Math.floor((a / 10) * 1) + " cal",
     },
+    "Assault Bike": {
+        "Running": (a) => Math.floor(a * 15) + " m",
+        "Ski-Erg": (a) => Math.floor(a * 1.45) + " cal",
+        "Row": (a) => Math.floor(a * 1.45) + " cal",
+        "Bike-Erg": (a) => Math.ceil(a * 1.45) + " cal",
+    },
 
 }
 

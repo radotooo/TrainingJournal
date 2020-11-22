@@ -1,2 +1,6 @@
 node_modules/
 connectionString.js
+.vscode/
+requests.http
+.env
+backup/

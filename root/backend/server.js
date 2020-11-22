@@ -1,15 +1,12 @@
 const express = require('express')
-const dbConnet = require('./db')
 const cors = require('cors')
+require('dotenv').config()
 
 const wodRoute = require('./routes/wod')
 const homeRoute = require('./routes/home')
 
 const app = express()
 const PORT = process.env.PORT || 5000;
-
-//connect Db
-dbConnet();
 
 //middleware
 app.use(express.json())

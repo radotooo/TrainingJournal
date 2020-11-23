@@ -1,7 +1,7 @@
 
 const axios = require("axios");
 const cheerio = require("cheerio");
-const express = require('express');
+const express = require("express");
 
 
 const router = express.Router();
@@ -14,7 +14,7 @@ axios.get("https://comptrain.co/wod/")
         text = $(".wod-info > div>div:first-child")
     })
 
-router.get('/', function (req, res) {
+router.get("/", function (req, res) {
     res.send(text.html())
 })
 

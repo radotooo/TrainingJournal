@@ -18,5 +18,4 @@ router.post("/", async (req, res) => {
     res.json(users);
 });
 
-console.log("hello");
 module.exports = router;

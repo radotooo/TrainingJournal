@@ -5,10 +5,17 @@ function addDefaultColumns(table) {
 }
 
 function references(table, tableName, notNullable = true) {
-    table.integer(`${tableName}_id`).notNullable().references("id").inTable(tableName);
+    const definition = table
+        .integer(`${tableName}_id`)
+        .references("id")
+        .inTable(tableName);
+    if (notNullable) {
+        definition.notNullable();
+    }
+    return definition;
 }
 
 module.exports = {
     addDefaultColumns,
-    references
+    references,
 };

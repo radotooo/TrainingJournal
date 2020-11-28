@@ -1,21 +1,31 @@
 const express = require("express");
-const user = require("./user.model");
+const User = require("./user.model");
 
 const router = express.Router();
 
-router.get("/", async (req, res) => {
-    const users = await user.query().select("id", "email", "username");
-    res.json(users);
+router.get("/", async (req, res, next) => {
+    try {
+        const users = await User.query()
+            .select("id", "email", "username")
+            .withGraphFetched("workouts(defaultSelects)");
+        res.json(users);
+    } catch (error) {
+        next(error);
+    }
 });
 
-router.post("/", async (req, res) => {
+router.post("/", async (req, res, next) => {
     const { email, username, password } = req.body;
-    const users = await user.query().insert({
-        email: email,
-        username: username,
-        password: password,
-    });
-    res.json(users);
+    try {
+        const users = await User.query().insert({
+            email: email,
+            username: username,
+            password: password,
+        });
+        res.status(201).json(users);
+    } catch (error) {
+        next(error);
+    }
 });
 
 module.exports = router;

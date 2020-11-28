@@ -10,7 +10,7 @@ router.get("/", async (req, res, next) => {
             .withGraphFetched("workouts(defaultSelects)");
         res.json(users);
     } catch (error) {
-        res.json(error.message);
+        next(error);
     }
 });
 
@@ -24,7 +24,7 @@ router.post("/", async (req, res, next) => {
         });
         res.status(201).json(users);
     } catch (error) {
-        res.json(error);
+        next(error);
     }
 });
 

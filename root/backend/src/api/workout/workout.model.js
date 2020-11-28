@@ -8,17 +8,17 @@ class Workout extends Model {
 
     static modifiers = {
         defaultSelects(query) {
-            query.select("name", "desctiption");
+            query.select("name", "description");
         },
     };
 
     static get jsonSchema() {
         return {
             type: "object",
-            required: ["name", "desctiption"],
+            required: ["name", "description"],
             properties: {
                 name: { type: "string", maxLenght: 80 },
-                desctiption: { type: "string" },
+                description: { type: "string" },
                 score: { type: "string" }, // optional
                 note_id: { type: "integer" },
             },

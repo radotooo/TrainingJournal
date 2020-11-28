@@ -1,23 +1,25 @@
 const express = require("express");
 const router = express.Router();
 const Workout = require("./workout.model");
+const workoutSchema = require("../workout/workout.validationSchema");
 
-router.post("/", async (req, res) => {
-    const { name, desctiption, score, note_id } = req.body;
+router.post("/", async (req, res, next) => {
     try {
+        const { name, description, score, note_id } = req.body;
+        const value = await workoutSchema.validateAsync(req.body);
         const workout = await Workout.query().insert({
             name: name,
-            desctiption: desctiption,
+            description: description,
             score: score,
             note_id: note_id,
         });
         res.status(201).json(workout);
     } catch (error) {
-        console.log(error);
+        res.json(error.message);
     }
 });
-
-router.get("/", async (req, res) => {
+console.log("Hello world");
+router.get("/", async (req, res, next) => {
     try {
         const workout = await Workout.query().select(
             "name",
@@ -26,7 +28,21 @@ router.get("/", async (req, res) => {
         );
         res.status(200).json(workout);
     } catch (error) {
-        console.log(error.message);
+        next(error);
     }
 });
+
+router.get("/search", async (req, res, next) => {
+    const { value } = req.body;
+    try {
+        const workout = await Workout.query()
+            .select("name", "description", "score")
+            .where("name", "like", `%${value}%`)
+            .limit(5);
+        res.status(200).json(workout);
+    } catch (error) {
+        next(error);
+    }
+});
+
 module.exports = router;

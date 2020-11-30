@@ -11,19 +11,6 @@ class Workout extends Model {
             query.select("name", "description");
         },
     };
-
-    static get jsonSchema() {
-        return {
-            type: "object",
-            required: ["name", "description"],
-            properties: {
-                name: { type: "string", maxLenght: 80 },
-                description: { type: "string" },
-                score: { type: "string" }, // optional
-                note_id: { type: "integer" },
-            },
-        };
-    }
 }
 
 module.exports = Workout;

@@ -7,17 +7,17 @@ class User extends Model {
         return tableNames.user;
     }
 
-    static get jsonSchema() {
-        return {
-            type: "object",
-            required: ["username", "email"],
-            properties: {
-                username: { type: "string" },
-                email: { type: "string" },
-                password: { type: "string" }, // optional
-            },
-        };
-    }
+    // static get jsonSchema() {
+    //     return {
+    //         type: "object",
+    //         required: ["username", "email"],
+    //         properties: {
+    //             username: { type: "string" },
+    //             email: { type: "string" },
+    //             password: { type: "string" }, // optional
+    //         },
+    //     };
+    // }
 
     static relationMappings = {
         workouts: {

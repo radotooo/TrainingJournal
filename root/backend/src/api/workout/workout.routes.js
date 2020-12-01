@@ -1,29 +1,33 @@
 const express = require("express");
 const router = express.Router();
 const Workout = require("./workout.model");
-const workoutSchema = require("../workout/workout.validationSchema");
+const middlewares = require("../../middlewares");
+const { workout } = require("../../validationSchemas");
 
-router.post("/", async (req, res, next) => {
-    try {
-        const { name, description, score, note_id } = req.body;
-        const value = await workoutSchema.validateAsync(req.body);
-        const workout = await Workout.query().insert({
-            name: name,
-            description: description,
-            score: score,
-            note_id: note_id,
-        });
-        res.status(201).json(workout);
-    } catch (error) {
-        res.json(error.message);
+router.post(
+    "/",
+    middlewares.valdiateSchema(workout),
+    async (req, res, next) => {
+        try {
+            const { name, description, score } = req.body;
+            const workout = await Workout.query().insert({
+                name: name,
+                description: description,
+                score: score,
+                // note_id: note_id,
+            });
+            res.status(201).json(workout);
+        } catch (error) {
+            next(error);
+        }
     }
-});
-console.log("Hello world");
+);
+
 router.get("/", async (req, res, next) => {
     try {
         const workout = await Workout.query().select(
             "name",
-            "desctiption",
+            "description",
             "score"
         );
         res.status(200).json(workout);

@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const db = require("./db");
+const middlewares = require("./middlewares");
 
 require("dotenv").config();
 
@@ -19,6 +20,8 @@ app.use("/api/v1", api);
 app.get("/", (req, res) => {
     res.json({ message: "Hello World" });
 });
+app.use(middlewares.notFound);
+app.use(middlewares.errorHandler);
 
 // app.listen(PORT, () => {
 //     console.log(`Example app listening at http://localhost:${PORT}`);

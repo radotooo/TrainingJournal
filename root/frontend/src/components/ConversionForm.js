@@ -74,9 +74,20 @@ export default function ConversionForm({ formula, label, data }) {
         setclearData(true)
     }
 
+    const handleLabel = (value) => {
+
+        if (value === "Running") {
+            return "Meters";
+        } else if (value === "Assault Bike") {
+            return "Calories"
+        }
+        return label;
+    }
+    //fromValue === "Running" ? "Meters" : label
+
     return (
         <Container>
-            <StyledTextField rows="5" type="number" variant='outlined' label={fromValue === "Running" ? "Meters" : label} value={meters} onChange={(e) => setMeters(e.target.value)} />
+            <StyledTextField rows="5" type="number" variant='outlined' label={handleLabel(fromValue)} value={meters} onChange={(e) => setMeters(e.target.value)} />
             <FormControl variant="outlined" onChange={(e) => { setFromValue(e.target.value) }} >
                 <InputLabel >From</InputLabel>
                 <Select
